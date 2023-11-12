@@ -290,38 +290,65 @@
     <Component class="javax.swing.JComboBox" name="cboGenero">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="31">
+          <StringArray count="58">
             <StringItem index="0" value="Seleccione"/>
-            <StringItem index="1" value="Ficci&#xf3;n"/>
-            <StringItem index="2" value="No ficci&#xf3;n"/>
-            <StringItem index="3" value="Misterio y Suspense"/>
-            <StringItem index="4" value="Romance"/>
-            <StringItem index="5" value="Terror y Horror"/>
-            <StringItem index="6" value="Aventura"/>
-            <StringItem index="7" value="Ciencia"/>
-            <StringItem index="8" value="Poes&#xed;a"/>
-            <StringItem index="9" value="Humor"/>
-            <StringItem index="10" value="Drama"/>
-            <StringItem index="11" value="Ciencia Ficci&#xf3;n"/>
-            <StringItem index="12" value="Fantas&#xed;a"/>
+            <StringItem index="1" value="Thriller Detectivesco"/>
+            <StringItem index="2" value="Fantas&#xed;a Oscura"/>
+            <StringItem index="3" value="Romance Hist&#xf3;rico"/>
+            <StringItem index="4" value="Aventura Fant&#xe1;stica"/>
+            <StringItem index="5" value="Misterio Rom&#xe1;ntico"/>
+            <StringItem index="6" value="Fantas&#xed;a &#xc9;pica"/>
+            <StringItem index="7" value="Fantas&#xed;a Emocional"/>
+            <StringItem index="8" value="Aventura Infantil"/>
+            <StringItem index="9" value="Thriller Rom&#xe1;ntico"/>
+            <StringItem index="10" value="Ciencia Ficci&#xf3;n Alternativa"/>
+            <StringItem index="11" value="Ficci&#xf3;n C&#xf3;smica"/>
+            <StringItem index="12" value="Thriller Temporal"/>
             <StringItem index="13" value="Realismo M&#xe1;gico"/>
-            <StringItem index="14" value="Distop&#xed;a"/>
-            <StringItem index="15" value="Novela Hist&#xf3;rica"/>
-            <StringItem index="16" value="Biograf&#xed;a"/>
-            <StringItem index="17" value="Autobiograf&#xed;a"/>
-            <StringItem index="18" value="Ensayo"/>
-            <StringItem index="19" value="Historia"/>
-            <StringItem index="20" value="Policiaca"/>
-            <StringItem index="21" value="Thriller Psicol&#xf3;gico"/>
-            <StringItem index="22" value="Literatura Infantil"/>
-            <StringItem index="23" value="Literatura Juvenil"/>
-            <StringItem index="24" value="Ciencia Popular"/>
-            <StringItem index="25" value="Econom&#xed;a y Finanzas"/>
-            <StringItem index="26" value="Autoayuda"/>
-            <StringItem index="27" value="Filosof&#xed;a"/>
-            <StringItem index="28" value="Arte y Fotograf&#xed;a"/>
-            <StringItem index="29" value="Cocina y Gastronom&#xed;a"/>
-            <StringItem index="30" value="Viajes y Aventuras"/>
+            <StringItem index="14" value="Misterio Hist&#xf3;rico"/>
+            <StringItem index="15" value="Fantas&#xed;a Dimensional"/>
+            <StringItem index="16" value="Fantas&#xed;a Mitol&#xf3;gica"/>
+            <StringItem index="17" value="Fantas&#xed;a Espiritual"/>
+            <StringItem index="18" value="Fantas&#xed;a"/>
+            <StringItem index="19" value="Thriller Psicol&#xf3;gico"/>
+            <StringItem index="20" value="Romance Fant&#xe1;stico"/>
+            <StringItem index="21" value="Ciencia Ficci&#xf3;n Tecnol&#xf3;gica"/>
+            <StringItem index="22" value="Ficci&#xf3;n Hist&#xf3;rica"/>
+            <StringItem index="23" value="Aventura Hist&#xf3;rica"/>
+            <StringItem index="24" value="Fantas&#xed;a Contempor&#xe1;nea"/>
+            <StringItem index="25" value="Realismo Fant&#xe1;stico"/>
+            <StringItem index="26" value="Drama Musical"/>
+            <StringItem index="27" value="Surrealismo"/>
+            <StringItem index="28" value="Misterio Familiar"/>
+            <StringItem index="29" value="Fantas&#xed;a Temporal"/>
+            <StringItem index="30" value="Ciencia Ficci&#xf3;n Apocal&#xed;ptica"/>
+            <StringItem index="31" value="Ficci&#xf3;n"/>
+            <StringItem index="32" value="No ficci&#xf3;n"/>
+            <StringItem index="33" value="Misterio y Suspense"/>
+            <StringItem index="34" value="Romance"/>
+            <StringItem index="35" value="Terror y Horror"/>
+            <StringItem index="36" value="Aventura"/>
+            <StringItem index="37" value="Ciencia"/>
+            <StringItem index="38" value="Poes&#xed;a"/>
+            <StringItem index="39" value="Humor"/>
+            <StringItem index="40" value="Drama"/>
+            <StringItem index="41" value="Ciencia Ficci&#xf3;n"/>
+            <StringItem index="42" value="Distop&#xed;a"/>
+            <StringItem index="43" value="Novela Hist&#xf3;rica"/>
+            <StringItem index="44" value="Biograf&#xed;a"/>
+            <StringItem index="45" value="Autobiograf&#xed;a"/>
+            <StringItem index="46" value="Ensayo"/>
+            <StringItem index="47" value="Historia"/>
+            <StringItem index="48" value="Policiaca"/>
+            <StringItem index="49" value="Literatura Infantil"/>
+            <StringItem index="50" value="Literatura Juvenil"/>
+            <StringItem index="51" value="Ciencia Popular"/>
+            <StringItem index="52" value="Econom&#xed;a y Finanzas"/>
+            <StringItem index="53" value="Autoayuda"/>
+            <StringItem index="54" value="Filosof&#xed;a"/>
+            <StringItem index="55" value="Arte y Fotograf&#xed;a"/>
+            <StringItem index="56" value="Cocina y Gastronom&#xed;a"/>
+            <StringItem index="57" value="Viajes y Aventuras"/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
