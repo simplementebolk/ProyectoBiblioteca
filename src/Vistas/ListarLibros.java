@@ -5,7 +5,6 @@ import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 /**
  *
  * @author bolk
@@ -46,9 +45,7 @@ public class ListarLibros extends javax.swing.JFrame {
                 
                 model.addRow(filas);
             }
-            tblLibros.setModel(model);
-            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-            tblLibros.setRowSorter(sorter);            
+            tblLibros.setModel(model);          
             
         } catch (Exception e) {
             System.err.println("Error : "+e.getMessage());

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -284,8 +283,6 @@ public class ModificarLibros extends javax.swing.JFrame {
                 model.addRow(filas);
             }
             tblLibro.setModel(model);
-            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-            tblLibro.setRowSorter(sorter);
             
         } catch (Exception e) {
             System.err.println("Error : "+e.getMessage());
