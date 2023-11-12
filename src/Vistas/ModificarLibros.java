@@ -1,15 +1,18 @@
 package Vistas;
+
 import Clases.Libro;
 import DAO.LibroDAO;
-import java.awt.Toolkit;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author bolk
@@ -19,8 +22,10 @@ public class ModificarLibros extends javax.swing.JFrame {
     public ModificarLibros() {
         initComponents();
         this.listarLibros();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
-  
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
+
     }
 
     @SuppressWarnings("unchecked")
@@ -180,17 +185,17 @@ public class ModificarLibros extends javax.swing.JFrame {
 
     private void tblLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLibroMouseClicked
         int fila = tblLibro.getSelectedRow();
-        if(fila==-1){
+        if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Usuario no seleccionado");
         } else {
-            String nombre = (String)tblLibro.getValueAt(fila, 0);
-            String fecha = (String)tblLibro.getValueAt(fila, 1);
-            String editorial = (String)tblLibro.getValueAt(fila, 2);
-            String autor = (String)tblLibro.getValueAt(fila, 3);
-            String descripcion = (String)tblLibro.getValueAt(fila, 4);
-            String genero = (String)tblLibro.getValueAt(fila, 5);
-            int id = Integer.parseInt((String)tblLibro.getValueAt(fila,6));
-            
+            String nombre = (String) tblLibro.getValueAt(fila, 0);
+            String fecha = (String) tblLibro.getValueAt(fila, 1);
+            String editorial = (String) tblLibro.getValueAt(fila, 2);
+            String autor = (String) tblLibro.getValueAt(fila, 3);
+            String descripcion = (String) tblLibro.getValueAt(fila, 4);
+            String genero = (String) tblLibro.getValueAt(fila, 5);
+            int id = Integer.parseInt((String) tblLibro.getValueAt(fila, 6));
+
             spId.setValue(id);
             txtNombre.setText(nombre);
             txtFecha.setText(fecha);
@@ -202,7 +207,6 @@ public class ModificarLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_tblLibroMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
         try {
             int id = (int) spId.getValue();
             String nombre = txtNombre.getText();
@@ -215,40 +219,49 @@ public class ModificarLibros extends javax.swing.JFrame {
             if ("Seleccione".equals(genero)) {
                 JOptionPane.showMessageDialog(this, "Por favor, seleccione un género válido");
                 return;
-            }
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            dateFormat.setLenient(false);
-            Date fecha;
-            try {
-                fecha = dateFormat.parse(fechaStr);
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha válida en formato dd/MM/yyyy");
-                return;
-            }
-
-            Libro libroModificado = new Libro();
-            libroModificado.setId(id);
-            libroModificado.setNombre(nombre);
-            libroModificado.setFecha(fecha);
-            libroModificado.setEditorial(editorial);
-            libroModificado.setAutor(autor);
-            libroModificado.setDescripcion(descripcion);
-            libroModificado.setGenero(genero);
-
-            if (new LibroDAO().modificarLibro(libroModificado)) {
-                JOptionPane.showMessageDialog(this, "Libro Modificado");
-                this.listarLibros();
-                Limpiar();
+            } else if (nombre.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, nombre invalido");
+            } else if (editorial.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, editorial invalida");
+            } else if (autor.trim().length() < 3) {
+                JOptionPane.showConfirmDialog(this, "Error, autor invalido");
+            } else if (descripcion.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, descripcion invalida");
             } else {
-                JOptionPane.showMessageDialog(this, "Libro NO Modificado");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                dateFormat.setLenient(false);
+                Date fecha;
+
+                try {
+                    fecha = dateFormat.parse(fechaStr);
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha válida en formato dia/mes/año");
+                    return;
+                }
+
+                Libro libroModificado = new Libro();
+                libroModificado.setId(id);
+                libroModificado.setNombre(nombre);
+                libroModificado.setFecha(fecha);
+                libroModificado.setEditorial(editorial);
+                libroModificado.setAutor(autor);
+                libroModificado.setDescripcion(descripcion);
+                libroModificado.setGenero(genero);
+
+                if (new LibroDAO().modificarLibro(libroModificado)) {
+                    JOptionPane.showMessageDialog(this, "Libro Modificado");
+                    this.listarLibros();
+                    Limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Libro NO Modificado");
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al modificar : " + e.getMessage());
-        }        
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
-     
-    private void Limpiar(){
+
+    private void Limpiar() {
         spId.setValue(0);
         txtNombre.setText("");
         txtFecha.setText("");
@@ -257,7 +270,7 @@ public class ModificarLibros extends javax.swing.JFrame {
         txtDescripcion.setText("");
         cboGenero.setSelectedItem("Seleccione");
     }
-           
+
     private void listarLibros() {
         // Crear una instancia del DAO para acceder a los libros
         LibroDAO dao = new LibroDAO();
@@ -300,9 +313,8 @@ public class ModificarLibros extends javax.swing.JFrame {
             // Manejar cualquier excepción que pueda ocurrir al acceder a los libros
             System.err.println("Error : " + e.getMessage());
         }
-    
-        
-    }        
+
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

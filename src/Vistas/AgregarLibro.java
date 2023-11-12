@@ -2,21 +2,22 @@ package Vistas;
 
 import Clases.Libro;
 import DAO.LibroDAO;
-import java.awt.Toolkit;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-/**
- *
- * @author bolk
- */
+
 public class AgregarLibro extends javax.swing.JFrame {
 
     public AgregarLibro() {
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,36 +154,50 @@ public class AgregarLibro extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
-            String nombre  = txtNombre.getText();
-            String fechaStr  = txtFecha.getText();
-            String editorial  = txtEditorial.getText();
-            String autor  = txtAutor.getText();
-            String descripcion  = txtDescripcion.getText();
-            String genero  = (String) cboGenero.getSelectedItem();
-        if ("Seleccione".equals(genero)) {
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione un género válido");
-            return;
-        }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormat.setLenient(false);
-        Date fecha;
-        try {
-            fecha = dateFormat.parse(fechaStr);
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha válida en formato dia/mes/año");
-            return;
-        }            
-            Libro l = new Libro(nombre,fecha,editorial,autor,descripcion,genero);
-            
-            if(new LibroDAO().guardarLibro(l)){
-                JOptionPane.showMessageDialog(this,"Libro Registrado");
-                Limpiar();
+            String nombre = txtNombre.getText();
+            String fechaStr = txtFecha.getText();
+            String editorial = txtEditorial.getText();
+            String autor = txtAutor.getText();
+            String descripcion = txtDescripcion.getText();
+            String genero = (String) cboGenero.getSelectedItem();
+
+            if ("Seleccione".equals(genero)) {
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione un género válido");
+                return;
+            } else if (nombre.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, nombre invalido");
+            } else if (editorial.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, editorial invalida");
+            } else if (autor.trim().length() < 3) {
+                JOptionPane.showConfirmDialog(this, "Error, autor invalido");
+            } else if (descripcion.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, descripcion invalida");
+            } else if (genero.trim().length() < 3) {
+                JOptionPane.showMessageDialog(this, "Error, genero invalido");
             } else {
-                JOptionPane.showMessageDialog(this, "Libro NO Agregado");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                dateFormat.setLenient(false);
+                Date fecha;
+
+                try {
+                    fecha = dateFormat.parse(fechaStr);
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha válida en formato dia/mes/año");
+                    return;
+                }
+
+                Libro l = new Libro(nombre, fecha, editorial, autor, descripcion, genero);
+
+                if (new LibroDAO().guardarLibro(l)) {
+                    JOptionPane.showMessageDialog(this, "Libro Registrado");
+                    Limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Libro NO Agregado");
+                }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar : "+e.getMessage());
-        }        
+            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
@@ -193,9 +208,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboGeneroActionPerformed
 
-    
-    
-    private void Limpiar(){
+    private void Limpiar() {
         txtNombre.setText("");
         txtFecha.setText("");
         txtEditorial.setText("");
@@ -203,10 +216,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         txtDescripcion.setText("");
         cboGenero.setSelectedItem("Seleccione");
     }
-    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

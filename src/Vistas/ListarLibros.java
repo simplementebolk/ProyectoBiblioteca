@@ -1,22 +1,23 @@
 package Vistas;
+
 import Clases.Libro;
 import DAO.LibroDAO;
-import java.awt.Toolkit;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author bolk
- */
+
 public class ListarLibros extends javax.swing.JFrame {
 
     public ListarLibros() {
         initComponents();
         this.listarLibros();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
     }
 
     private void listarLibros() {
@@ -61,9 +62,8 @@ public class ListarLibros extends javax.swing.JFrame {
             // Manejar cualquier excepción que pueda ocurrir al acceder a los libros
             System.err.println("Error : " + e.getMessage());
         }
-    
-        
-    } 
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -1,19 +1,19 @@
 package Vistas;
 
-import java.awt.Toolkit;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-/**
- *
- * @author bolk
- */
-public class Login extends javax.swing.JFrame {
 
+public class Login extends javax.swing.JFrame {
+    
     public Login() {
         initComponents();
         setSize(330, 448);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,6 +71,11 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
+        btnIngresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnIngresarKeyPressed(evt);
+            }
+        });
         getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/logo.png"))); // NOI18N
@@ -98,22 +103,24 @@ public class Login extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
         String contrasenia = passContraseña.getText();
         
-        if(usuario.isEmpty() || contrasenia.isEmpty()){
+        if (usuario.isEmpty() || contrasenia.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Algun campo esta vacio");
         } else {
-            if(usuario.equals("admin") && contrasenia.equals("admin2020")){
+            if (usuario.equals("admin") && contrasenia.equals("admin2020")) {
                 JOptionPane.showMessageDialog(this, "Bienvenido");
                 Menu mn = new Menu();
                 mn.setVisible(true);
                 this.dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Su usuario o contraseña es incorrecto");
             }
-        }
-                
-       
+        }        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void btnIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarKeyPressed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

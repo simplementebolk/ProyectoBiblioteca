@@ -2,24 +2,25 @@ package Vistas;
 
 import Clases.Libro;
 import DAO.LibroDAO;
-import java.awt.Toolkit;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author bolk
- */
+
 public class EliminarLibros extends javax.swing.JFrame {
 
     public EliminarLibros() {
         initComponents();
         this.listarLibros();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -32,10 +33,10 @@ public class EliminarLibros extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEditorial = new javax.swing.JLabel();
+        lblAutor = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         txtEditorial = new javax.swing.JTextField();
@@ -107,29 +108,29 @@ public class EliminarLibros extends javax.swing.JFrame {
         lblFecha.setText("Fecha:");
         getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Editorial:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        lblEditorial.setBackground(new java.awt.Color(255, 255, 255));
+        lblEditorial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblEditorial.setForeground(new java.awt.Color(255, 255, 255));
+        lblEditorial.setText("Editorial:");
+        getContentPane().add(lblEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Autor:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        lblAutor.setBackground(new java.awt.Color(255, 255, 255));
+        lblAutor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAutor.setForeground(new java.awt.Color(255, 255, 255));
+        lblAutor.setText("Autor:");
+        getContentPane().add(lblAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Descripción:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        lblDescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        lblDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        lblDescripcion.setText("Descripción:");
+        getContentPane().add(lblDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Género:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        lblGenero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGenero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblGenero.setForeground(new java.awt.Color(255, 255, 255));
+        lblGenero.setText("Género:");
+        getContentPane().add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         txtNombre.setEnabled(false);
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 310, -1));
@@ -178,16 +179,16 @@ public class EliminarLibros extends javax.swing.JFrame {
 
     private void tblLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLibroMouseClicked
         int fila = tblLibro.getSelectedRow();
-        if(fila==-1){
+        if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Usuario no seleccionado");
         } else {
-            String nombre = (String)tblLibro.getValueAt(fila, 0);
-            String fecha = (String)tblLibro.getValueAt(fila, 1);
-            String editorial = (String)tblLibro.getValueAt(fila, 2);
-            String autor = (String)tblLibro.getValueAt(fila, 3);
-            String descripcion = (String)tblLibro.getValueAt(fila, 4);
-            String genero = (String)tblLibro.getValueAt(fila, 5);
-            int id = Integer.parseInt((String)tblLibro.getValueAt(fila,6));
+            String nombre = (String) tblLibro.getValueAt(fila, 0);
+            String fecha = (String) tblLibro.getValueAt(fila, 1);
+            String editorial = (String) tblLibro.getValueAt(fila, 2);
+            String autor = (String) tblLibro.getValueAt(fila, 3);
+            String descripcion = (String) tblLibro.getValueAt(fila, 4);
+            String genero = (String) tblLibro.getValueAt(fila, 5);
+            int id = Integer.parseInt((String) tblLibro.getValueAt(fila, 6));
 
             spId.setValue(id);
             txtNombre.setText(nombre);
@@ -204,7 +205,7 @@ public class EliminarLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-    try {
+        try {
             int id = (int) spId.getValue();
 
             if (new LibroDAO().eliminarLibro(id)) {
@@ -223,7 +224,7 @@ public class EliminarLibros extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void Limpiar(){
+    private void Limpiar() {
         spId.setValue(0);
         txtNombre.setText("");
         txtFecha.setText("");
@@ -274,9 +275,9 @@ public class EliminarLibros extends javax.swing.JFrame {
         } catch (Exception e) {
             // Manejar cualquier excepción que pueda ocurrir al acceder a los libros
             System.err.println("Error : " + e.getMessage());
-        }    
-    } 
-    
+        }
+    }
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -290,13 +291,13 @@ public class EliminarLibros extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cboGenero;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblEditorial;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblNombre;

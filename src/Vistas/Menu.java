@@ -1,11 +1,10 @@
 package Vistas;
 
-import java.awt.Toolkit;
-/**
- *
- * @author bolk
- */
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 public class Menu extends javax.swing.JFrame {
+
     AgregarLibro agregarL = new AgregarLibro();
     ListarLibros listarL = new ListarLibros();
     ModificarLibros modificarL = new ModificarLibros();
@@ -13,8 +12,9 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
-           
+        URL iconoURL = getClass().getResource("/IMG/icon.png");
+        ImageIcon icono = new ImageIcon(iconoURL);
+        this.setIconImage(icono.getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -107,7 +107,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
         // TODO add your handling code here:
         agregarL.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed
 
     private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
@@ -121,7 +121,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
     private void jMenuItemEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarActionPerformed
-       eliminarL.setVisible(true);
+        eliminarL.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarActionPerformed
 
     public static void main(String args[]) {
