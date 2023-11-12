@@ -4,6 +4,8 @@ import DAO.LibroDAO;
 import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -17,6 +19,7 @@ public class ModificarLibros extends javax.swing.JFrame {
 
     public ModificarLibros() {
         initComponents();
+        this.listarLibros();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/icon.png")));
   
     }
@@ -256,11 +259,17 @@ public class ModificarLibros extends javax.swing.JFrame {
         cboGenero.setSelectedItem("Seleccione");
     }
            
-    private void listarLibros(){
+    private void listarLibros() {
+        // Crear una instancia del DAO para acceder a los libros
         LibroDAO dao = new LibroDAO();
         try {
+            // Obtener la lista de libros desde el DAO
             List<Libro> lista = dao.listarLibros();
-            
+
+            // Ordenar la lista por el campo ID
+            Collections.sort(lista, Comparator.comparingInt(Libro::getId));
+
+            // Crear un modelo de tabla para la JTable
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Nombre");
             model.addColumn("Fecha de salida");
@@ -269,7 +278,8 @@ public class ModificarLibros extends javax.swing.JFrame {
             model.addColumn("Descripcion");
             model.addColumn("Genero");
             model.addColumn("ID");
-            
+
+            // Llenar el modelo con los datos de la lista de libros
             for (Libro libro : lista) {
                 String[] filas = new String[7];
                 filas[0] = libro.getNombre();
@@ -278,15 +288,20 @@ public class ModificarLibros extends javax.swing.JFrame {
                 filas[3] = libro.getAutor();
                 filas[4] = libro.getDescripcion();
                 filas[5] = libro.getGenero();
-                filas[6] = String.valueOf(libro.getId());   
-                
+                filas[6] = String.valueOf(libro.getId());
+
+                // Agregar la fila al modelo
                 model.addRow(filas);
             }
+
+            // Establecer el modelo en la JTable
             tblLibro.setModel(model);
-            
+
         } catch (Exception e) {
-            System.err.println("Error : "+e.getMessage());
+            // Manejar cualquier excepción que pueda ocurrir al acceder a los libros
+            System.err.println("Error : " + e.getMessage());
         }
+    
         
     }        
 
