@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author bolk
@@ -275,8 +274,8 @@ public class ModificarLibros extends javax.swing.JFrame {
             model.addColumn("Fecha de salida");
             model.addColumn("Editorial");
             model.addColumn("Autor");
-            model.addColumn("Descripcion");
-            model.addColumn("Genero");
+            model.addColumn("Descripción");
+            model.addColumn("Género");
             model.addColumn("ID");
 
             // Llenar el modelo con los datos de la lista de libros
