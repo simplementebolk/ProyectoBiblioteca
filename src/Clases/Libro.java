@@ -1,10 +1,7 @@
 package Clases;
 
 import java.util.Date;
-/**
- *
- * @author bolk
- */
+
 public class Libro {
     private int id;
     private String nombre;

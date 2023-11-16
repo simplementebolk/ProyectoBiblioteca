@@ -2,10 +2,7 @@ package Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-/**
- *
- * @author bolk
- */
+
 public class Conexion {
     private static Connection conexion;
     

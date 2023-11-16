@@ -8,10 +8,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import Conexion.Conexion;
-/**
- *
- * @author bolk
- */
+
 public class LibroDAO {
     private Connection conexion;
 
