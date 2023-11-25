@@ -1,6 +1,12 @@
-create user bibleotecaduocuc IDENTIFIED by bibleotecaduocuc ACCOUNT UNLOCK;
+ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
 
-grant all PRIVILEGES to bibleotecaduocuc;
+CREATE USER bibliotecaduocuc IDENTIFIED BY "bibliotecaduocuc"
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+ALTER USER bibliotecaduocuc QUOTA UNLIMITED ON USERS;
+GRANT CREATE SESSION TO bibliotecaduocuc;
+GRANT "RESOURCE" TO bibliotecaduocuc;
+ALTER USER bibliotecaduocuc DEFAULT ROLE "RESOURCE";
 
 
 drop sequence libro_seq;

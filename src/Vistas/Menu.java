@@ -9,6 +9,7 @@ public class Menu extends javax.swing.JFrame {
     ListarLibros listarL = new ListarLibros();
     ModificarLibros modificarL = new ModificarLibros();
     EliminarLibros eliminarL = new EliminarLibros();
+    InformeLibro informeL = new InformeLibro();
 
     public Menu() {
         initComponents();
@@ -31,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemListar = new javax.swing.JMenuItem();
         jMenuItemModificar = new javax.swing.JMenuItem();
         jMenuItemEliminar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor de Biblioteca");
@@ -85,6 +87,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemEliminar);
 
+        jMenuItem1.setText("Buscar Libro");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -124,6 +134,10 @@ public class Menu extends javax.swing.JFrame {
         eliminarL.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        informeL.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -136,6 +150,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemEliminar;
     private javax.swing.JMenuItem jMenuItemListar;
